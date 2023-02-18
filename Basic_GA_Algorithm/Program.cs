@@ -64,13 +64,13 @@ namespace Basic_GA_Algorithm
                 population = new_generation;
 
                 Console.WriteLine(string.Format("Generation: {1}{0}String: {2}{0}Fitness: {3}{0}---------------",
-                                    Environment.NewLine,generation, population[0].
-                                    Chromosome, population[0].Fitness));
+                                    Environment.NewLine,generation, 
+                                    population[0].Chromosome, population[0].Fitness));
                 generation++;
             }
             Console.WriteLine(string.Format("Generation: {1}{0}String: {2}{0}Fitness: {3}{0}",
-                                Environment.NewLine,generation , population[0].
-                                Chromosome , population[0].Fitness));
+                                Environment.NewLine,generation , 
+                                population[0].Chromosome , population[0].Fitness));
 
             Console.ReadKey();
         }
