@@ -23,16 +23,16 @@ namespace Basic_GA_Algorithm
             for (int i = 0; i < len; i++)
             {
                 // random probability
-                float p = Helper.RandomNumber(0, 100) / 100;
+                float probability = Helper.RandomNumber(0, 100) / 100;
 
                 // if prob is less than 0.45, insert gene
                 // from parent 1
-                if (p < 0.45)
+                if (probability < 0.45)
                     child_chromosome += Chromosome[i];
 
                 // if prob is between 0.45 and 0.90, insert
                 // gene from parent 2
-                else if (p < 0.90)
+                else if (probability < 0.90)
                     child_chromosome += parent2.Chromosome[i];
 
                 // otherwise insert random gene(mutate),
@@ -51,7 +51,7 @@ namespace Basic_GA_Algorithm
             int fitness = 0;
             for (int i = 0; i < len; i++)
             {
-                if (Chromosome[i] != BaseInfo.Target[i])
+                if (Chromosome[i] == BaseInfo.Target[i])
                     fitness++;
             }
             return fitness;

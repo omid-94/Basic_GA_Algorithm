@@ -24,13 +24,14 @@ namespace Basic_GA_Algorithm
 
             while (!found)
             {
+                bool stopCriterion = (population[0].Fitness >= BaseInfo.Target.Length);
                 // sort the population in increasing order of fitness score
-                population = population.OrderBy(x => x.Fitness).ToList();
+                population = population.OrderByDescending(x => x.Fitness).ToList();
 
                 // if the individual having lowest fitness score ie.
                 // 0 then we know that we have reached to the target
                 // and break the loop
-                if (population[0].Fitness <= 0)
+                if (stopCriterion)
                 {
                     found = true;
                     break;
@@ -54,7 +55,7 @@ namespace Basic_GA_Algorithm
                     int r = Helper.RandomNumber(0, 50);
                     Individual parent1 = population[r];
 
-                    r = Helper. RandomNumber(0, 50);
+                    r = Helper.RandomNumber(0, 50);
                     Individual parent2 = population[r];
 
                     Individual offspring = parent1.Mate(parent2);
@@ -62,12 +63,14 @@ namespace Basic_GA_Algorithm
                 }
                 population = new_generation;
 
-                Console.WriteLine(string.Format("Generation: {0}--String: {1}--Fitness: {2}",
-                                    generation, population[0].Chromosome, population[0].Fitness));
+                Console.WriteLine(string.Format("Generation: {1}{0}String: {2}{0}Fitness: {3}{0}---------------",
+                                    Environment.NewLine,generation, population[0].
+                                    Chromosome, population[0].Fitness));
                 generation++;
             }
-            Console.WriteLine(string.Format("Generation: {0}--String: {1}--Fitness: {2}",
-                                generation , population[0].Chromosome , population[0].Fitness));
+            Console.WriteLine(string.Format("Generation: {1}{0}String: {2}{0}Fitness: {3}{0}",
+                                Environment.NewLine,generation , population[0].
+                                Chromosome , population[0].Fitness));
 
             Console.ReadKey();
         }
