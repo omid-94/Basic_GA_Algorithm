@@ -63,16 +63,21 @@ namespace Basic_GA_Algorithm
                 }
                 population = new_generation;
 
-                Console.WriteLine(string.Format("Generation: {1}{0}String: {2}{0}Fitness: {3}{0}---------------",
-                                    Environment.NewLine,generation, 
-                                    population[0].Chromosome, population[0].Fitness));
+                Log(population, generation);
+
                 generation++;
             }
-            Console.WriteLine(string.Format("Generation: {1}{0}String: {2}{0}Fitness: {3}{0}",
-                                Environment.NewLine,generation , 
-                                population[0].Chromosome , population[0].Fitness));
-
             Console.ReadKey();
+        }
+        private static void Log(List<Individual> population , int generation)
+        {
+            int top10Percent = (10 * BaseInfo.PopulationSize) / 100;
+            Console.WriteLine("Generation: {1}{0}", Environment.NewLine, generation);
+            for (int i = 0; i < top10Percent; i++)
+                Console.WriteLine("String: {1}{0}Fitness: {2}{0}",
+                    Environment.NewLine, population[i].Chromosome, population[i].Fitness);
+
+            Console.WriteLine("-----------------------------------------");
         }
     }
 }
